@@ -1,6 +1,7 @@
 import React from "react";
 import Pet from "./Pet";
 
+//destruct pets from the props object
 const Results = ({ pets }) => {
   return (
     <div className="search">

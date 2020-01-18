@@ -10,6 +10,7 @@ const SearchParams = () => {
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
   const [pets, setPets] = useState([]);
 
+  //async await just work in more modern browsers
   async function requestPets() {
     const { animals } = await pet.animals({
       location,
