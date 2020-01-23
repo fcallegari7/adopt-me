@@ -32,6 +32,7 @@ const SearchParams = () => {
       setBreeds(breedStrings);
     }, console.error);
   }, [animal, setBreed, setBreeds]);
+  //effect will run when one of the depencies change.
 
   return (
     <div className="search-params">
