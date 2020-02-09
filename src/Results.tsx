@@ -1,8 +1,13 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
+import { Animal } from "@frontendmasters/pet";
 import Pet from "./Pet";
 
-//destruct pets from the props object
-const Results = ({ pets }) => {
+interface IProps {
+  pets: Animal[];
+}
+
+// destruct pets from the props object
+const Results: FunctionComponent<IProps> = ({ pets }) => {
   return (
     <div className="search">
       {pets.length === 0 ? (

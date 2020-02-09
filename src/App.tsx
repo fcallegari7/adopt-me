@@ -10,7 +10,7 @@ import NavBar from "./NavBar";
 // const SearchParams = lazy(() => import("./SearchParams"));
 
 const App = () => {
-  //if you want to use more values in the context, you can pass an object instead of a string and work with themeHook.buttonColor, themeHook.headingColor and so on.
+  // if you want to use more values in the context, you can pass an object instead of a string and work with themeHook.buttonColor, themeHook.headingColor and so on.
   const themeHook = useState("darkblue");
   return (
     <React.StrictMode>

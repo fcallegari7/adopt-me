@@ -1,26 +1,26 @@
 // mostly code from reactjs.org/docs/error-boundaries.html
 
-import React, { Component } from "react";
+import React, { Component, ErrorInfo } from "react";
 import { Link, Redirect } from "@reach/router";
 
-//Error Boundaries can only be used with class components. It doesn't work with Hooks.
+// Error Boundaries can only be used with class components. It doesn't work with Hooks.
 class ErrorBoundary extends Component {
-  state = { hasError: false, redirect: false };
+  public state = { hasError: false, redirect: false };
 
-  static getDerivedStateFromError() {
+  public static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  componentDidCatch(error, info) {
+  public componentDidCatch(error: Error, info: ErrorInfo) {
     console.error("ErrorBoundary caught an error", error, info);
   }
-  //this lifecycle method is called when props or state change. It's similar to useEffect().
-  componentDidUpdate() {
+  // this lifecycle method is called when props or state change. It's similar to useEffect().
+  public componentDidUpdate() {
     if (this.state.hasError) {
       setTimeout(() => this.setState({ redirect: true }), 5000);
     }
   }
-  render() {
+  public render() {
     if (this.state.redirect) {
       return <Redirect to="/" />;
     }
@@ -32,7 +32,7 @@ class ErrorBoundary extends Component {
         </h1>
       );
     }
-    //Render always needs to return something. In this case it works as a pass-through as if it was ignored if there are no errors.
+    // Render always needs to return something. In this case it works as a pass-through as if it was ignored if there are no errors.
     return this.props.children;
   }
 }

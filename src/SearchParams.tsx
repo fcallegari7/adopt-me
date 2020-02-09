@@ -1,19 +1,25 @@
-import React, { useState, useEffect, useContext } from "react";
-import pet, { ANIMALS } from "@frontendmasters/pet";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  FunctionComponent
+} from "react";
+import pet, { ANIMALS, Animal } from "@frontendmasters/pet";
 import Results from "./Results";
 import useDropdown from "./useDropdown";
 import ThemeContext from "./ThemeContext";
+import { RouteComponentProps } from "@reach/router";
 
-const SearchParams = () => {
+const SearchParams: FunctionComponent<RouteComponentProps> = () => {
   // A hook is an array with the state and the updater. It receives the state from useState or from a custom hook (i.e. useDropdown).
   const [location, setLocation] = useState("Seattle, WA");
-  const [breeds, setBreeds] = useState([]);
+  const [breeds, setBreeds] = useState([] as string[]);
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
-  const [pets, setPets] = useState([]);
+  const [pets, setPets] = useState([] as Animal[]);
   const [theme, setTheme] = useContext(ThemeContext);
 
-  //async await just work in more modern browsers
+  // async await just work in more modern browsers
   async function requestPets() {
     const { animals } = await pet.animals({
       location,
@@ -32,7 +38,7 @@ const SearchParams = () => {
       setBreeds(breedStrings);
     }, console.error);
   }, [animal, setBreed, setBreeds]);
-  //effect will run when one of the depencies change.
+  // effect will run when one of the depencies change.
 
   return (
     <div className="search-params">
